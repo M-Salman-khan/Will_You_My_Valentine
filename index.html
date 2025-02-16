@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Roboto", serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(255, 222, 227);
+            height: 100dvh;
+            width: 100dvw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            /* display: none; */
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .content h2 {
+            margin: 20px;
+            color: rgb(249, 49, 49);
+            font-size: 40px;
+        }
+
+        .btns {
+            align-self: center;
+            margin-bottom: 20px;
+            
+        }
+
+        #yes,
+        #no {
+            background-color: #4caf50;
+            font-size: 22px;
+            padding: 8px 20px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            /* transform:scale(2) ; */
+        }
+
+        #no {
+            background-color: rgb(249, 49, 49);
+        }
+
+        .img {
+            align-self: center;
+        }
+        #yes a{
+            color: white;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h2>Will you be my Valentine ?</h2>
+            <div class="btns">
+                <button id="yes"><a href="./yes.html"">Yes</a></button>
+                <button id="no">No</button>
+            </div>
+        </div>
+        <div class="img">
+            <img src="./giphy.gif" alt="">
+        </div>
+    </main>
+    <script>
+        const messages = [
+            "Are you sure?",
+            "Really sure??",
+            "Are you positive?",
+            "Pookie please...",
+            "Just think about it!",
+            "If you say no, I will be really sad...",
+            "I will be very sad...",
+            "I will be very very very sad...",
+            "Ok fine, I will stop asking...",
+            "Just kidding, say yes please! ❤️"
+        ];
+        no = document.querySelector('#no')
+        yes = document.querySelector('#yes')
+        yes.addEventListener('click',()=>{
+            window.href.location='./yes.html'
+        })
+        let currentSize = 22
+        messageIndex = 1
+        no.addEventListener('click', () => {
+            currentSize = parseFloat(window.getComputedStyle(yes).fontSize)
+            yes.style.fontSize = `${currentSize * 1.5}px`
+            if (messages[messageIndex]) {
+                no.innerText=`${messages[messageIndex]}`
+                messageIndex+=1
+            }
+            else{
+                messageIndex=0
+            }
+        })
+    </script>
+</body>
+
+</html>
