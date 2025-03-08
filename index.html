@@ -70,7 +70,6 @@
         #no {
             font-size: 16px;
             background-color: rgb(249, 49, 49);
-            max-width: 50vw;
         }
 
         .img {
@@ -111,6 +110,7 @@
             "Just kidding, say yes please! ❤️"
         ];
         no = document.querySelector('#no')
+        no.style.width = `${yes.offsetWidth}px`;
         yes = document.querySelector('#yes')
         yes.addEventListener('click',()=>{
             window.href.location='./yes.html'
@@ -120,6 +120,7 @@
         no.addEventListener('click', () => {
             currentSize = parseFloat(window.getComputedStyle(yes).fontSize)
             yes.style.fontSize = `${currentSize * 1.25}px`;
+            no.style.width = `${yes.offsetWidth}px`;
 
             if (messageIndex == messages.length) {
               no.style.display = "none";
