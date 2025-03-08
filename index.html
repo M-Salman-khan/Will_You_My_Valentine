@@ -39,13 +39,17 @@
         }
 
         .content h2 {
+            text-align: center;
             margin: 20px;
             color: rgb(249, 49, 49);
             font-size: 40px;
         }
 
         .btns {
-            align-self: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
             margin-bottom: 20px;
             
         }
@@ -59,10 +63,12 @@
             color: white;
             border-radius: 4px;
             cursor: pointer;
+            width: auto;
             /* transform:scale(2) ; */
         }
 
         #no {
+            font-size: 16px;
             background-color: rgb(249, 49, 49);
         }
 
@@ -104,6 +110,7 @@
             "Just kidding, say yes please! ❤️"
         ];
         no = document.querySelector('#no')
+        no.style.width = `${yes.offsetWidth}px`;
         yes = document.querySelector('#yes')
         yes.addEventListener('click',()=>{
             window.href.location='./yes.html'
@@ -112,7 +119,14 @@
         messageIndex = 1
         no.addEventListener('click', () => {
             currentSize = parseFloat(window.getComputedStyle(yes).fontSize)
-            yes.style.fontSize = `${currentSize * 1.5}px`
+            yes.style.fontSize = `${currentSize * 1.25}px`;
+            no.style.width = `${yes.offsetWidth}px`;
+
+            if (messageIndex == messages.length) {
+              no.style.display = "none";
+              yes.style.width = "90vw";
+            }
+
             if (messages[messageIndex]) {
                 no.innerText=`${messages[messageIndex]}`
                 messageIndex+=1
